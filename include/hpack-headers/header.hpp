@@ -184,7 +184,7 @@ public:
     size_t
     http2_size() const;
 
-    friend struct header_traits;
+    friend struct msgpack_traits;
     friend struct headers;
     friend struct header_static_table_t;
     friend struct init_header_t;
