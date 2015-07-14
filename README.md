@@ -1,2 +1,2 @@
-# http2-headers
-http2 header implementation 
+# hpack-headers
+hpack header implementation for cocaine project.
