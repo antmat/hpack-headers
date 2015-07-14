@@ -18,7 +18,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "header.hpp"
+#include <hpack-headers/header.hpp>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -26,7 +26,6 @@
 #include <random>
 
 using namespace hpack;
-
 
 TEST(header_data_t, comparator) {
     header::data_t data1 { "qwerty\0qw", sizeof("qwerty\0qw") };

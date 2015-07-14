@@ -1,7 +1,7 @@
-#include "header.hpp"
+#include "hpack-headers/header.hpp"
 
 namespace hpack {
-namespace {
+
 size_t
 http2_integer_size(size_t sz, size_t bit_offset) {
     // See packing here https://httpwg.github.io/specs/rfc7541.html#integer.representation
@@ -52,8 +52,6 @@ http2_integer_encode(unsigned char* dest, uint64_t source, size_t bit_offset, ch
     }
     dest[ret-1] = source;
     return ret;
-}
-
 }
 
 struct init_header_t {
@@ -158,10 +156,6 @@ header_t::http2_size() const {
     // 1 refer to string literals which has size with 1-bit padding.
     // See https://tools.ietf.org/html/draft-ietf-httpbis-header-compression-12#section-5.2
     return name.size + http2_integer_size(name.size, 1) + value.size + http2_integer_size(value.size, 1) + header_table_t::http2_header_overhead;
-}
-
-namespace {
-
 }
 
 const header_static_table_t::storage_t&

@@ -48,6 +48,15 @@ namespace boost { namespace mpl {
 }}
 
 namespace hpack {
+
+struct init_header_t;
+
+size_t
+http2_integer_size(size_t sz, size_t bit_offset);
+
+size_t
+http2_integer_encode(unsigned char* dest, uint64_t source, size_t bit_offset, char prefix);
+
 namespace header {
 
 struct data_t {

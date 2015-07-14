@@ -90,7 +90,10 @@ struct msgpack_traits {
         //If header is fully from the table just fill it and return
         if(source.type == msgpack::type::POSITIVE_INTEGER) {
             if(source.via.u64 >= table.size() || source.via.u64 == 0) {
-                throw cocaine::error_t("Invalid index for header table");
+                throw std::system_error(
+                    std::make_error_code(std::errc::invalid_argument),
+                    "Invalid index for header table"
+                );
             }
             return table[source.via.u64];
         }
