@@ -4,9 +4,15 @@ HPACKHEADERS_BEG_NS
 
 size_t
 http2_integer_size(size_t sz, size_t bit_offset) {
+    if(bit_offset == 0 || bit_offset > 7) {
+        throw std::system_error(
+            std::make_error_code(std::errc::invalid_argument),
+            "Invalid bit_offset for http2_integer_size"
+        );
+    }
     // See packing here https://httpwg.github.io/specs/rfc7541.html#integer.representation
     // if integer fits to 8 - bit_offset bits
-    if(sz < (1 << (8 - bit_offset))) {
+    if(sz < static_cast<size_t>(1 << (8 - bit_offset))) {
         return 1;
     }
     // One byte is first and we start to write in second one

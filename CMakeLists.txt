@@ -68,6 +68,7 @@ add_cxx_compiler_flag(-Werror RELEASE)
 add_cxx_compiler_flag(-pedantic)
 add_cxx_compiler_flag(-pedantic-errors)
 add_cxx_compiler_flag(-pthread)
+add_cxx_compiler_flag(-fpic)
 
 IF(HPACK_ALLOW_TESTS)
     ENABLE_TESTING()
