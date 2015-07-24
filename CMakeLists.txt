@@ -75,15 +75,17 @@ IF(HPACK_ALLOW_TESTS)
     ADD_TEST(unit_test COMMAND ${CMAKE_BINARY_DIR}/tests/hpack-headers-tests )
 ENDIF()
 
-INSTALL(
-    TARGETS
-        hpack-headers
-    LIBRARY DESTINATION lib
-)
+IF(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
+    INSTALL(
+        TARGETS
+            hpack-headers
+        LIBRARY DESTINATION lib
+    )
 
-INSTALL(
-    DIRECTORY
-        include/
-    DESTINATION include
-    COMPONENT development
-)
+    INSTALL(
+        DIRECTORY
+            include/
+        DESTINATION include
+        COMPONENT development
+    )
+ENDIF()
