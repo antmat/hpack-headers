@@ -20,34 +20,17 @@
 
 #pragma once
 
-#include <boost/mpl/contains.hpp>
-#include <boost/mpl/find.hpp>
-#include <boost/mpl/for_each.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/vector.hpp>
+#include "hpack-headers/config.hpp"
+#include "hpack-headers/mpl.hpp"
 
 #include <array>
 #include <cassert>
 #include <cstring>
 #include <iostream>
+#include <system_error>
 #include <vector>
 
-#include "boost/mpl/vector/vector50.hpp"
-#include "boost/mpl/aux_/config/ctps.hpp"
-#include "boost/preprocessor/iterate.hpp"
-#include "boost/config.hpp"
-
-// Some woodoo magic of boost mpl.
-// This allows to generate mpl vector larger than 50
-// See http://comments.gmane.org/gmane.comp.lib.boost.user/6986
-
-namespace boost { namespace mpl {
-#define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(51, 100, "boost/mpl/vector/aux_/numbered.hpp"))
-#include BOOST_PP_ITERATE()
-}}
-
-namespace hpack {
+HPACKHEADERS_BEG_NS
 
 struct init_header_t;
 
@@ -209,11 +192,7 @@ private:
     header::data_t value;
 };
 
-} // namespace hpack
-
-#include "header_definitions.hpp"
-
-namespace hpack {
+#include "header_definitions.ipp"
 
 struct header_static_table_t {
     typedef boost::mpl::vector83<
@@ -392,6 +371,5 @@ private:
     size_t capacity;
 };
 
-} // namespace hpack
-
+HPACKHEADERS_END_NS
 

@@ -1,6 +1,6 @@
 #include "hpack-headers/header.hpp"
 
-namespace hpack {
+HPACKHEADERS_BEG_NS
 
 size_t
 http2_integer_size(size_t sz, size_t bit_offset) {
@@ -320,6 +320,5 @@ header_table_t::operator[](size_t idx) {
     return headers[idx];
 }
 
+HPACKHEADERS_END_NS
 
-
-}

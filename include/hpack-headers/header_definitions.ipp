@@ -20,7 +20,6 @@
 
 #pragma once
 
-namespace hpack {
 struct headers {
     friend struct header_static_table_t;
 
@@ -866,6 +865,3 @@ public:
         }
     };
 };
-
-} // namespace hpack
-

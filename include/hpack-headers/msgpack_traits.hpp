@@ -26,7 +26,7 @@
 #include <msgpack/pack.hpp>
 #include <msgpack/object.hpp>
 
-namespace hpack {
+HPACKHEADERS_BEG_NS
 
 struct msgpack_traits {
 
@@ -156,5 +156,4 @@ struct msgpack_traits {
     }
 };
 
-} // namespace hpack
-
+HPACKHEADERS_END_NS

@@ -3,6 +3,7 @@ PROJECT(${PROJECT})
 
 # Unit tests
 IF(HPACK_ALLOW_TESTS)
+    ENABLE_TESTING()
     INCLUDE(DownloadGoogleTesting)
     download_google_testing()
 
@@ -29,4 +30,5 @@ IF(HPACK_ALLOW_TESTS)
 
     SET_TARGET_PROPERTIES(hpack-headers-tests PROPERTIES
     COMPILE_FLAGS "-std=c++0x -W -Wall -Werror -pedantic")
+
 ENDIF()
