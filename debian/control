@@ -1,0 +1,21 @@
+Source: hpack-headers
+Section: utils
+Priority: extra
+Maintainer: Anton Matveenko <antmat@me.com>
+Build-Depends: cmake, debhelper (>= 7.0.13), libboost-filesystem-dev, libboost-thread-dev,
+Standards-Version: 3.9.3
+Vcs-Git: git://github.com/cocaine/cocaine-plugins.git
+Vcs-Browser: https://github.com/cocaine/cocaine-plugins
+
+Package: libhpack-headers
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Cocaine - Cache Service
+ LRU Cache service for Cocaine.
+
+Package: libhpack-headers-dbg
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, libhpack-headers (= ${binary:Version})
+Description: Cocaine - Cache Service. Debug package.
+ LRU Cache service for Cocaine. Debug package.
+

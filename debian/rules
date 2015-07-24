@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_OPTIONS=parallel=$(shell grep -c ^processor /proc/cpuinfo)
+
+override-dh_auto_test:
+	debian/tmp/hpack-headers-tests
+
+override-dh_auto_configure:
+	dh_auto_configure -- -DHPACK_INSTALL_TESTS
+
+override-dh-strip:
+	dh_strip --dbg-package=libhpack-headers-dbg
+
+%:
+	dh $@ --parallel
+
