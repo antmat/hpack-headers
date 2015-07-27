@@ -27,12 +27,10 @@ OPTION(HPACK_ALLOW_TESTS "Build Tests" ON)
 INCLUDE(foreign/modules/AddCXXCompilerFlag.cmake)
 
 FIND_PACKAGE(Boost 1.46.0
-    REQUIRED COMPONENTS
-        filesystem
-        program_options
-        system
-        thread)
+    REQUIRED
+)
 
+FIND_PACKAGE(Threads)
 
 INCLUDE_DIRECTORIES(
     ${Boost_INCLUDE_DIRS}
@@ -54,6 +52,8 @@ ADD_LIBRARY(hpack-headers-static STATIC
     src/header.cpp
 )
 
+TARGET_LINK_LIBRARIES(hpack-headers ${CMAKE_THREAD_LIBS_INIT})
+TARGET_LINK_LIBRARIES(hpack-headers-static ${CMAKE_THREAD_LIBS_INIT})
 
 # Try and enable C++11.
 add_cxx_compiler_flag(-std=c++11)
@@ -67,7 +67,6 @@ add_cxx_compiler_flag(-Wextra)
 add_cxx_compiler_flag(-Werror RELEASE)
 add_cxx_compiler_flag(-pedantic)
 add_cxx_compiler_flag(-pedantic-errors)
-add_cxx_compiler_flag(-pthread)
 add_cxx_compiler_flag(-fpic)
 
 IF(HPACK_ALLOW_TESTS)
